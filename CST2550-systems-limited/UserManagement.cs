@@ -28,9 +28,9 @@ namespace CST2550_systems_limited
             User user = users.Find(item => item.ID == id);
             return user;
         }
-        public List<User> GetUsersByAge(int age)
+        public List<User> GetUsersByRole(Role role)
         {
-            List<User> user = users.FindAll(item => item.Age == age);
+            List<User> user = users.FindAll(item => item.UserRole == role);
             return user;
         }
 

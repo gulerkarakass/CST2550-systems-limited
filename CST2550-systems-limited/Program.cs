@@ -70,10 +70,10 @@ namespace CST2550_systems_limited
 
 
             Console.WriteLine();
-            Console.WriteLine("Search users and print the user with age 24:");
-            List<User> UByAge = users.GetUsersByAge(24);
-            Console.WriteLine("Found {0} user/(s)", UByAge.Count);
-            foreach (User user in UByAge)
+            Console.WriteLine("Search users and print the user with role user:");
+            List<User> UByRole = users.GetUsersByRole(Role.User);
+            Console.WriteLine("Found {0} user/(s)", UByRole.Count);
+            foreach (User user in UByRole)
             {
                 Console.WriteLine(user.ToString());
             }

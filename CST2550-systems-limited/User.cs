@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CST2550_systems_limited
 {
-    public enum Role { Admin, User }
+    public enum Role { Admin, User, Guest }
     public class User
     {
         public int ID;
@@ -16,7 +16,7 @@ namespace CST2550_systems_limited
         public string Email { get; set; }
         public long Phone { get; set; }
         public string Password { get; set; }
-        Role UserRole { get; set; }
+        public Role UserRole { get; set; }
         public User(int id, string name, string email, int age, Role role, long phone, string password)
         {
             ID = id;
