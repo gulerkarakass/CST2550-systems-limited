@@ -14,9 +14,9 @@ namespace CST2550_systems_limited
         {
             users = new List<User>();
         }
-        public void AddUser(int id, string name, string email, int age)
+        public void AddUser(int id, string name, string email, int age, Role role, long phone, string password)
         {
-            users.Add(new User(id, name, email, age));
+            users.Add(new User(id, name, email, age, role, phone, password));
         }
 
         public void RemoveUser(int id)

@@ -13,13 +13,13 @@ namespace CST2550_systems_limited
         {
             UserManagement users = new UserManagement();
 
-            users.AddUser(1, "Jonathan", "j@j.com", 34);
-            users.AddUser(2, "Ammy", "a@a.com", 27);
-            users.AddUser(3, "Martin", "m@m.com", 18);
-            users.AddUser(4, "Joshua", "jo@jo.com", 24);
-            users.AddUser(5, "Adam", "ad@ad.com", 28);
-            users.AddUser(6, "Daniel", "d@d.com", 43);
-            users.AddUser(7, "Rinna", "r@r.com", 24);
+            users.AddUser(1, "Jonathan", "j@j.com", 34, Role.Admin, 07412345678, "12345");
+            users.AddUser(2, "Ammy", "a@a.com", 27, Role.User, 07478123456, "112233");
+            users.AddUser(3, "Martin", "m@m.com", 18, Role.User, 07423456789, "11357");
+            users.AddUser(4, "Joshua", "jo@jo.com", 24, Role.User, 07434567890, "2468");
+            users.AddUser(5, "Adam", "ad@ad.com", 28, Role.User, 07445678123, "12134");
+            users.AddUser(6, "Daniel", "d@d.com", 43, Role.User, 07456781234, "23145");
+            users.AddUser(7, "Rinna", "r@r.com", 24, Role.User, 07467812345, "3344225");
 
 
             List<User> usersList = users.GetUsers();
