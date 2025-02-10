@@ -6,37 +6,93 @@ using System.Threading.Tasks;
 
 namespace CST2550_systems_limited
 {
-    public class UserManagement
+    public class UserManagement<TKey, TValue>
     {
-        private List<User> users;
+        private class HashNode
+        {
+            public TKey Key { get; set; }
+            public TValue Value { get; set; }
+            public HashNode Next { get; set; }
+            public HashNode(TKey key, TValue value)
+            {
+                Key = key;
+                Value = value;
+            }
+        }
+        private HashNode[] buckets;
+        private int size;
+        private const int DEFAULT_CAPACITY = 16;
+        public UserManagement(int capacity = DEFAULT_CAPACITY)
+        {
+            if (capacity <= 0)
+                capacity = DEFAULT_CAPACITY;
 
-        public UserManagement()
-        {
-            users = new List<User>();
+            buckets = new HashNode[capacity];
+            size = 0;
         }
-        public void AddUser(int id, string name, string email, int age, Role role, long phone, string password)
+        private int GetBucketIndex(TKey key)
         {
-            users.Add(new User(id, name, email, age, role, phone, password));
+            int hashCode = key.GetHashCode();
+            return Math.Abs(hashCode % buckets.Length);
         }
+        public void Put(TKey key, TValue value)
+        {
+            int bucketIndex = GetBucketIndex(key);
+            HashNode node = buckets[bucketIndex];
 
-        public void RemoveUser(int id)
-        {
-            users.RemoveAll(item => item.ID == id);
+            while (node != null)
+            {
+                if (node.Key.Equals(key))
+                {
+                    node.Value = value;
+                    return;
+                }
+                node = node.Next;
+            }
+            HashNode newNode = new HashNode(key, value);
+            newNode.Next = buckets[bucketIndex];
+            buckets[bucketIndex] = newNode;
+            size++;
         }
-        public User FindUser(int id)
+        public void RemoveUser(TKey key)
         {
-            User user = users.Find(item => item.ID == id);
-            return user;
-        }
-        public List<User> GetUsersByRole(Role role)
-        {
-            List<User> user = users.FindAll(item => item.UserRole == role);
-            return user;
-        }
+            int bucketIndex = GetBucketIndex(key);
+            HashNode node = buckets[bucketIndex];
+            HashNode previous = null;
 
-        public List<User> GetUsers()
+            while (node != null)
+            {
+                if (node.Key.Equals(key))
+                {
+                    if (previous == null)
+                    {   
+                        // Delete the first node
+                        buckets[bucketIndex] = node.Next;
+                    }
+                    else
+                    {
+                        // Cross the current node
+                        previous.Next = node.Next;
+                    }
+                    size--;
+                    return;
+                }
+                previous = node;
+                node = node.Next;
+            }
+        }
+        public TValue GetValue(TKey key)
         {
-            return users;
+            int bucketIndex = GetBucketIndex(key);
+            HashNode node = buckets[bucketIndex];
+
+            while (node != null)
+            {
+                if (node.Key.Equals(key))
+                    return node.Value;
+                node = node.Next;
+            }
+            throw new KeyNotFoundException($"Key not found: {key}");
         }
     }
 }
