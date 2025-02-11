@@ -15,6 +15,7 @@ namespace CST2550_systems_limited
         public string Name { get; set; }
         public string Email { get; set; }
         public long Phone { get; set; }
+        public string Postcode { get; set; }
         public string Password { get; set; }
         public Role UserRole { get; set; }
         public User(int id, string name, string email, int age, Role role, long phone, string password)
