@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace CST2550_systems_limited
 {
-    public enum Role { Admin, User, Guest }
     public class User
     {
-        public int ID;
-        public int Age { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public long Phone { get; set; }
+        public string Phone { get; set; }
         public string Postcode { get; set; }
-        public string Password { get; set; }
+        public string DateOfBirth { get; set; }
+        public Gender UserGender { get; set; }
         public Role UserRole { get; set; }
-        public User(int id, string name, string email, int age, Role role, long phone, string password)
+        public string Password { get; set; }
+        public User(string name, string email, Gender gender, Role role, string phone, string password)
         {
-            ID = id;
             Name = name;
             Email = email;
-            Age = age;
+            UserGender = gender;
             UserRole = role;
             Phone = phone;
             Password = password;
@@ -51,7 +49,7 @@ namespace CST2550_systems_limited
             return rg.IsMatch(password);
         }
 
-        public bool IsValidPhone(long phone)
+        public bool IsValidPhone(string phone)
         {
             /*
              0[0-9]{10} matches a string with a leading 0 followed by exactly 10 digits
@@ -62,14 +60,14 @@ namespace CST2550_systems_limited
             */
             string pattern = "^0[0-9]{10}$";
             Regex rg = new Regex(pattern);
-            return rg.IsMatch($"{phone}");
+            return rg.IsMatch(phone);
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"User's name, email, age, phone, password, role with id {ID} are: {Name}, {Email}, {Age}, {Phone}, {Password}, {UserRole}");
+            sb.Append($"User's name, email, phone, role, gender and password are: {Name}, {Email}, {Phone}, {UserRole}, {UserGender}, {Password}");
 
             return sb.ToString();
         }
