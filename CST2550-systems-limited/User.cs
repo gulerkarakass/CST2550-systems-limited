@@ -41,7 +41,7 @@ namespace CST2550_systems_limited
              (?=.*[a-z]) means the password must contain at least 1 lowercase letter
              (?=.*[A-Z]) means the password must contain at least 1 uppercase letter
              (?=.*\W) means the password must contain at least 1 special character
-             (?!.* )  means the password must not contain space character
+             (?!.* ) means the password must not contain space character
              {8,16} specifies the password length as 8-16 characters long
             */
             string pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,16}$";
