@@ -1,7 +1,0 @@
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\bin\Debug\CST2550-systems-limited.pdb
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\obj\Debug\CST2550-systems-limited.csproj.AssemblyReference.cache
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\obj\Debug\CST2550-systems-limited.csproj.CoreCompileInputs.cache
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\obj\Debug\CST2550-systems-limited.pdb
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\bin\Debug\CST2550-systems-limited.exe.config
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\bin\Debug\CST2550-systems-limited.exe
-C:\Users\dania\source\repos\CST2550-systems-limited\CST2550-systems-limited\obj\Debug\CST2550-systems-limited.exe
