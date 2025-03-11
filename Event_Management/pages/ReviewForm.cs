@@ -198,6 +198,9 @@ namespace Event_Management.pages
 
             }
 
+            dataGridVewReviews.Rows.Clear();
+            dataGridViewHiredVenues.Rows.Clear();
+
             foreach (var item in list)
             {
                 string category;
