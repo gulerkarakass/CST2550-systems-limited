@@ -63,7 +63,7 @@ namespace Event_Management.pages
 
             User User = new User(fullName, email, postcode, dob, gender, role, phone, password);
             bool contains = false;
-            foreach(User user in Program.usersList)
+            foreach (User user in Program.usersList)
             {
                 if (user.Email == email)
                 {
@@ -77,7 +77,8 @@ namespace Event_Management.pages
                 // Register new User
                 if (User.IsValidEmail(email) && User.IsValidPassword(password) && User.IsValidPhone(phone))
                 {
-                    var user = new User_Model {
+                    var user = new User_Model
+                    {
                         FullName = fullName,
                         Email = email,
                         Postcode = postcode,
@@ -167,6 +168,107 @@ namespace Event_Management.pages
                 Program.usersManagement.Put(user_Model.ID, user);
                 Program.usersList.Add(user);
             }
+        }
+
+        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtPostcode_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtDOB_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            EnableSignUp();
+        }
+        private void EnableSignUp()
+        {
+            string fullName = txtName.Text;
+            string email = txtEmail.Text;
+            string postcode = txtPostcode.Text;
+            string dob = txtDOB.Text;
+            string phone = txtPhone.Text;
+            string password = txtPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+            string r = comboRole.Text;
+            int roleId;
+            Role role;
+            if (r == "Admin")
+            {
+                role = Role.Admin;
+                roleId = 1;
+            }
+            else
+            {
+                role = Role.User;
+                roleId = 2;
+            }
+            string g = comboGender.Text;
+            int genderId;
+            Gender gender;
+            if (g == "Female")
+            {
+                gender = Gender.Female;
+                genderId = 1;
+            }
+            else if (g == "Male")
+            {
+                gender = Gender.Male;
+                genderId = 2;
+            }
+            else
+            {
+                gender = Gender.PreferNotToSay;
+                genderId = 3;
+            }
+            User User = new User(fullName, email, postcode, dob, gender, role, phone, password);
+            bool contains = false;
+            foreach (User user in Program.usersList)
+            {
+                if (user.Email == email)
+                {
+                    contains = true;
+                    break;
+                }
+            }
+            // Register
+            if (password == confirmPassword)
+            {
+                // Register new User
+                if (User.IsValidEmail(email) && User.IsValidPassword(password) && User.IsValidPhone(phone))
+                {
+                    BtnSignup.Enabled = true;
+                }
+            }
+            else
+            {
+                BtnSignup.Enabled = false;
+            }
+
+
         }
     }
 }

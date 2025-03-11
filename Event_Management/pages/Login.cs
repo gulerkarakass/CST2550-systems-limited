@@ -91,5 +91,51 @@ namespace Event_Management.pages
                 Program.usersList.Add(user);
             }
         }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            EnableLogin();
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            EnableLogin();
+        }
+        private void EnableLogin()
+        {
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+
+            bool contains = false;
+            User User = null;
+            foreach (User user in Program.usersList)
+            {
+                if (user.Email == email)
+                {
+                    contains = true;
+                    User = user;
+                    break;
+                }
+            }
+            if (contains)
+            {
+                if (User.Email == email && User.Password == password)
+                {
+                    btnLogin.Enabled = true;
+                }
+                else
+                {
+                    btnLogin.Enabled = false;
+                }
+
+            }
+            else
+            {
+                btnLogin.Enabled = false;
+            }
+
+        }
+
+
     }
 }

@@ -53,6 +53,7 @@
             // 
             // BtnSignup
             // 
+            this.BtnSignup.Enabled = false;
             this.BtnSignup.Location = new System.Drawing.Point(243, 336);
             this.BtnSignup.Name = "BtnSignup";
             this.BtnSignup.Size = new System.Drawing.Size(275, 65);
